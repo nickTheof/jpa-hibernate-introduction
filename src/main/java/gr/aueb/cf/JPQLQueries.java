@@ -34,7 +34,7 @@ public class JPQLQueries {
             findTeachersByCourseTitle("Javascript");
             countTeachersByLastname();
             listTeachersWithNoCourses();
-            listTeachersWithCourseCounts();
+            listCoursesWithTeachersCount();
 
 
             em.getTransaction().commit();
@@ -124,11 +124,11 @@ public class JPQLQueries {
         teachers.forEach(System.out::println);
     }
 
-    private static void listTeachersWithCourseCounts() {
+    private static void listCoursesWithTeachersCount() {
         String sql = "SELECT c.title, COUNT(t) FROM Course c LEFT JOIN c.teachers t GROUP BY c.title ORDER BY COUNT(t) DESC";
         TypedQuery<Object[]> query = em.createQuery(sql, Object[].class);
         List<Object[]> objects = query.getResultList();
-        System.out.println("----------List of Teachers With their courses' count ----------------");
+        System.out.println("----------List of Courses With Number of teachers ----------------");
         for (Object[] obj: objects) {
             String course = (String) obj[0];
             Long count = (Long) obj[1];
