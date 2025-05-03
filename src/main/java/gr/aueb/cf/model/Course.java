@@ -28,7 +28,7 @@ public class Course {
     private String comments;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "TINYINT COMMENT='ΕΙΔΟΣ ΜΑΘΗΜΑΤΟΣ: 1. Θεωρία 2. Εργαστήριο 3. Μεικτό'")
+    @Column(name="lesson_type", columnDefinition = "TINYINT COMMENT='ΕΙΔΟΣ ΜΑΘΗΜΑΤΟΣ: 1. Θεωρία 2. Εργαστήριο 3. Μεικτό'")
     private LessonType lessonType;
 
     @Getter(AccessLevel.PROTECTED)
